@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodels="clr-namespace:UserManagement.Maui.ViewModels"
+             xmlns:models="clr-namespace:UserManagement.Common.Models;assembly=UserManagement.Common"
+             x:Class="UserManagement.Maui.MainPage"
+             x:DataType="viewmodels:MainViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InverseBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid Padding="10"
+          RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0"
+                Text="Load Users"
+                Command="{Binding LoadUsersCommand}" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:User">
+                    
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+
+                           
+                            <Label Text="{Binding Name}"
+                                   FontSize="16"
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Email}"
+                                   FontSize="14"
+                                   TextColor="Gray" />
+                            <Label Text="{Binding RolesDisplay}"
+                                   FontSize="14"
+                                   TextColor="LightBlue" />
+                        </StackLayout>
+
+                        <Switch Grid.Column="1"
+                            IsToggled="{Binding Active}"
+                            IsEnabled="{Binding IsAdmin, Converter={StaticResource InverseBooleanConverter}}"
+                            Toggled="OnToggleChanged" />
+
+
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <ContentView x:DataType="models:User">
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <Label Text="{Binding EmptyMessage}"
+                               Margin="10,25,10,10"
+                               FontAttributes="Bold"
+                               FontSize="18"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

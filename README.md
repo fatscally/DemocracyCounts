@@ -12,7 +12,7 @@
    cd src/UserManagement.Api
    dotnet run
 
-   → runs on http://localhost:5000 (or https:5001)
+   → runs on http://localhost:5000 (or https:5001)  Check console for exact ports.
 
 2. Update MAUI HttpClient base address if needed (currently localhost:5000)
 

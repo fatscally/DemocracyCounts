@@ -11,6 +11,7 @@
         {
             Window window = new Window(new AppShell());
             window.Width = 400;
+            window.Title = "Democracy Counts";
             return window;
         }
     }

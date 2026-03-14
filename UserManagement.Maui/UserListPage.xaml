@@ -5,7 +5,10 @@
              xmlns:viewmodels="clr-namespace:UserManagement.Maui.ViewModels"
              xmlns:models="clr-namespace:UserManagement.Common.Models;assembly=UserManagement.Common"
              x:Class="UserManagement.Maui.MainPage"
-             x:DataType="viewmodels:MainViewModel">
+             x:DataType="viewmodels:MainViewModel"
+             Title="Users">
+
+
 
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -48,7 +48,7 @@
                                    FontSize="14"
                                    TextColor="Gray" />
                             <Label Text="{Binding RolesDisplay}"
-                                   FontSize="14"
+                                   FontSize="12"
                                    TextColor="LightBlue" />
                         </StackLayout>
 
